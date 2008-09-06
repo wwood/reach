@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "reach"
-  s.version  = "0.1"
+  s.version  = "0.1.1"
   s.date     = "2008-09-05"
   s.summary  = "Extend the Ruby Array class for less loops and blocks"
   s.email    = "donttrustben somewhere near gmail.com"
