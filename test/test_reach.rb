@@ -4,6 +4,9 @@
 #   You can distribute/modify this program under the terms of
 #   the GNU Lesser General Public License version 3.
 
+
+$:.unshift File.join(File.dirname(__FILE__),'..','lib')
+
 require 'test/unit'
 require 'reach'
 
