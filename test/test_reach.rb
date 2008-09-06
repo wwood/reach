@@ -55,4 +55,8 @@ class ReachTest < Test::Unit::TestCase
   def test_block_accepted
     assert_equal %w(d e f), @one_level.reach.succ.collect{|c| c.succ.succ}
   end
+  
+  def test_to_s
+    assert_equal [1,2].to_s, [1,2].reach.to_s
+  end
 end

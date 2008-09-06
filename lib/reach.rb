@@ -54,4 +54,8 @@ class ReachingArray
   def ==(another)
     @retract <=> another.retract
   end
+  
+  def to_s
+    @retract.to_s
+  end
 end
