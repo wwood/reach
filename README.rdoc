@@ -38,7 +38,7 @@ Notice that a ReachableArray is returned, not an Array. This means you can chain
 Removing reachability from the array, or retracting, is equally as simple - just use the retract method:
 
   % require 'reach'
-  % Book.all.reach.bookshelf.retract
+  % Book.all.reach.bookshelf.retract => Array of Bookshelf objects
 
 == Caution
 
