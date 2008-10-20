@@ -1,0 +1,45 @@
+Copyright (C) 2008      Ben J Woodcroft <donttrustben somewhere near gmail.com>
+
+= Reach
+
+Reach is a small Ruby liby that extends Array so they are more transparent
+to methods. For instance, a ReachableArray of Book objects can not only take normal Array methods such as
+collect and sum, but also methods that operate Book objects, such as author and title. 
+
+== Example
+
+Say I have an regular ActiveRecord driven database, that has Bookshelf, Book, and Author objects. Bookshelves have many books, and books have many authors.
+
+Say I want all the books.
+
+% Book.all
+
+Then I want all the bookshelves from those books. A common way to do this is to use the collect method of arrays:
+
+% Book.all.collect{|book| book.bookshelf} => array of bookshelves.
+
+From personal experience, running a single method on each array element and collecting the results is quite common, especially in Rails. The idea, then, is to make the arrays responsive to the methods that apply not just to the Array itself as is commonly done, but to methods that apply to the members of that array. That is, make the array reachable (caution made up word). In this case this it is the books method.
+
+To make an array reachable, you convert it into a ReachableArray object, by calling the reach method of Array, which is added by the reach library. 
+
+% require 'reach'
+% Book.all.reach => ReachableArray of books
+
+Now getting the corresponding array of bookshelves requires less typing:
+
+% require 'reach'
+% Book.all.reach.bookshelf => ReachableArray of Bookshelf objects
+
+Notice that a ReachableArray is returned, not an Array. This means you can chain reaches together:
+
+% require 'reach'
+% Author.all.reach.book.bookshelf => ReachableArray of Bookshelf objects
+
+Removing reachability from the array, or retracting, is equally as simple - just use the retract method:
+
+% require 'reach'
+% Book.all.reach.bookshelf.retract
+
+== Caution
+
+When operating on a ReachableArray, methods that operate on the Array itself take precedence over methods that apply to array members.
