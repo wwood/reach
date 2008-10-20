@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.description = "Extend the Ruby Array class for less loops and blocks."
   s.authors  = ["Ben J Woodcroft"]
   s.files    = ["reach.gemspec", 
+		"README.rdoc", 
 		"lib/reach.rb"]
   s.test_files = ["test/test_reach.rb"]
 end

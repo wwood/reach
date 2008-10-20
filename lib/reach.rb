@@ -2,7 +2,7 @@
 #
 #   This program is free software.
 #   You can distribute/modify this program under the terms of
-#   the GNU Lesser General Public License version 3.
+#   the GNU General Public License version 3.
 
 # The point of this is that the 
 # Bookshelf.all.reach.books.each do {|book| puts book.name}
@@ -30,9 +30,8 @@ class ReachingArray
     @retract = retract
   end
   
-  # When a method is called on an array and that method
-  # isn't defined for an array, then run 
-  # 
+  # The method could be missing from the array, the members, or both.
+  # Try to pass the method to each, in that order, accepting the first taker
   def method_missing(method, *args, &block)
     if @retract.respond_to?(method)
       # If this is an array method, just use that
@@ -50,7 +49,8 @@ class ReachingArray
     end
   end
   
-  # Mainly for testing
+  # Equality test - equality of the underlying retract
+  # arrays is all that matter
   def ==(another)
     @retract <=> another.retract
   end
