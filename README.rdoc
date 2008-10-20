@@ -18,9 +18,9 @@ Then I want all the bookshelves from those books. A common way to do this is to 
 
   % Book.all.collect{|book| book.bookshelf} => array of bookshelves.
 
-From personal experience, running a single method on each array element and collecting the results is quite common, especially in Rails. The idea, then, is to make the arrays responsive to the methods that apply not just to the Array itself as is commonly done, but to methods that apply to the members of that array. That is, make the array reachable (caution: made up word). In the case above we want to run the 'bookshelf' method on each of the book objects in the array.
+From personal experience, running a single method on each array element and collecting the results is quite common, especially in Rails. The idea, then, is to make the arrays not just responsive to the methods that apply to the Array itself, but to methods that apply to the members of that array. That is, make the array reachable (caution: made up word). In the case above we want to run the 'bookshelf' method on each of the book objects in the array.
 
-To make an array reachable, you convert it into a ReachableArray object, by calling the reach method of Array, which is added by the reach library. 
+To make an array reachable, convert it into a ReachableArray object, by calling the reach method of Array, which is added by the inclusion of the reach library. 
 
   % require 'reach'
   % Book.all.reach => ReachableArray of books
