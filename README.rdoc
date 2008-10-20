@@ -1,5 +1,7 @@
 Copyright (C) 2008      Ben J Woodcroft <donttrustben somewhere near gmail.com>
 
+This software is BETA! Use at your own risk.
+
 = Reach
 
 Reach is a small Ruby liby that extends Array so they are more transparent
