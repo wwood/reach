@@ -44,7 +44,7 @@ Removing reachability from the array, or retracting, is equally as simple - just
 
 === Slap
 
-Like reach. the slap method is another method added to the Array class to make it mroe transparent. The difference is that reach looks to see if the given method operates on the Array class, and if not then applies it to each member of that array. The slap method bypasses the first step, and just applies the given method to each member. For instance
+Like reach, the slap method is another method added to the Array class to make it mroe transparent. The difference is that reach looks to see if the given method operates on the Array class, and if not then applies it to each member of that array. The slap method bypasses the first step, and just applies the given method to each member. For instance
 
  % require 'reach'
  % [[1,2,3],[4]].slap.length.retract => [1,3] 
