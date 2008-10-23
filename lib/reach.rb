@@ -19,6 +19,10 @@ class Array
   def reach
     ReachingArray.new(self)
   end
+  
+  def slap
+    SlappingArray.new(self)
+  end
 end
 
 class ReachingArray
@@ -57,5 +61,41 @@ class ReachingArray
   
   def to_s
     @retract.to_s
+  end
+  
+  def slap
+    retract.slap
+  end
+end
+
+class SlappingArray
+  # The array that this reaching array is extending. This might
+  # be a real Array, or a ReachingArray
+  attr_accessor :retract
+  
+  def initialize(retract)
+    @retract = retract
+  end
+  
+  # Try to pass the method to each of the array members 
+  def method_missing(method, *args, &block)
+    @retract = @retract.collect do |o|
+      o.send(method, *args, &block)
+    end
+    return self
+  end
+  
+  # Equality test - equality of the underlying retract
+  # arrays is all that matter
+  def ==(another)
+    @retract <=> another.retract
+  end
+  
+  def to_s
+    @retract.to_s
+  end
+  
+  def reach
+    retract.reach
   end
 end

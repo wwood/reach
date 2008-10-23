@@ -60,3 +60,16 @@ class ReachTest < Test::Unit::TestCase
     assert_equal [1,2].to_s, [1,2].reach.to_s
   end
 end
+
+class SlapTest < Test::Unit::TestCase
+  def setup
+    @one_level = %w(a b c)
+    @two_level = [[1,2,3],[5]]
+  end
+  
+  def test_simple
+    assert_kind_of SlappingArray, @two_level.slap
+    
+    assert_equal [3,1], @two_level.slap.length.retract
+  end
+end
