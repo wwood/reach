@@ -72,4 +72,16 @@ class SlapTest < Test::Unit::TestCase
     
     assert_equal [3,1], @two_level.slap.length.retract
   end
+  
+  def test_mutate
+    assert_kind_of ReachingArray, @two_level.slap.reach
+    assert_equal [[1,2,3],[5]], @two_level.slap.reach.retract
+  end
+  
+  def test_array_method_fail
+    assert_raise NoMethodError do 
+      @one_level.slap.join(' ')
+    end
+  end
+  
 end
