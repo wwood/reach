@@ -4,7 +4,7 @@ This software is BETA! Use at your own risk.
 
 = Reach
 
-Reach is a small Ruby liby that extends Array so they are more transparent
+Reach is a small Ruby liby that extends the Array class so that Arrays are more transparent
 to methods. For instance, a ReachableArray of Book objects can not only take normal Array methods such as
 collect and sum, but also methods that operate Book objects, such as author and title. 
 
@@ -16,11 +16,11 @@ Say I want all the books.
 
   % Book.all
 
-Then I want all the bookshelves from those books. A common way to do this is to use the collect method of arrays:
+Then I want to find all the bookshelves from those that contain those books.
 
   % Book.all.collect{|book| book.bookshelf} => array of bookshelves.
 
-From personal experience, running a single method on each array element and collecting the results is quite common, especially in Rails. The idea, then, is to make the arrays not just responsive to the methods that apply to the Array itself, but to methods that apply to the members of that array. That is, make the array reachable (caution: made up word). In the case above we want to run the 'bookshelf' method on each of the book objects in the array.
+From personal experience, running a single method on each array element and collecting the results is quite common, especially in Rails. The idea, then, is to make the arrays not just responsive to the methods that apply to the Array itself, but to methods that apply to the +members+ of that array. That is, make the array reachable (caution: made up word). In the case above we want to run the 'bookshelf' method on each of the book objects in the array.
 
 To make an array reachable, convert it into a ReachableArray object, by calling the reach method of Array, which is added by the inclusion of the reach library. 
 
@@ -32,7 +32,7 @@ Now getting the corresponding array of bookshelves requires less typing:
   % require 'reach'
   % Book.all.reach.bookshelf => ReachableArray of Bookshelf objects
 
-Notice that a ReachableArray is returned, not an Array. This means you can chain reaches together:
+Notice that a ReachableArray is returned by the bookshelf method, not an Array. This means you can chain reaches together:
 
   % require 'reach'
   % Author.all.reach.book.bookshelf => ReachableArray of Bookshelf objects
@@ -41,6 +41,13 @@ Removing reachability from the array, or retracting, is equally as simple - just
 
   % require 'reach'
   % Book.all.reach.bookshelf.retract => Array of Bookshelf objects
+
+=== Slap
+
+Like reach, the slap method is another method added to the Array class to make it mroe transparent. The difference is that reach looks to see if the given method operates on the Array class, and if not then applies it to each member of that array. The slap method bypasses the first step, and just applies the given method to each member. For instance
+
+ % require 'reach'
+ % [[1,2,3],[4]].slap.length.retract => [1,3] 
 
 == Caution
 
