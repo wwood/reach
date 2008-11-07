@@ -66,7 +66,7 @@ class ReachingArray
   end
   
   def to_s
-    @retract.to_s
+    method_missing(:to_s)
   end
   
   def slap
@@ -86,7 +86,13 @@ class SlappingArray
   # Try to pass the method to each of the array members 
   def method_missing(method, *args, &block)
     @retract = @retract.collect do |o|
-      o.send(method, *args, &block)
+      unless o.kind_of?(Array)
+        o.send(method, *args, &block)
+      else
+        # Update in 0.2.1: If the element of the array is an array
+        # itself, then operate on it as a ReachingArray as well.
+        o.slap.send(method, *args, &block).retract
+      end
     end
     return self
   end
@@ -98,7 +104,7 @@ class SlappingArray
   end
   
   def to_s
-    @retract.to_s
+    method_missing(:to_s)
   end
   
   def reach

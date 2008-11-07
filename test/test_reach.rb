@@ -59,6 +59,11 @@ class ReachTest < Test::Unit::TestCase
   def test_to_s
     assert_equal [1,2].to_s, [1,2].reach.to_s
   end
+  
+  def test_recursive
+    assert_equal [1,[2,3],[[5]]],
+      ['1',['2','3'],[['5']]].reach.to_i.retract
+  end
 end
 
 class SlapTest < Test::Unit::TestCase
@@ -70,7 +75,7 @@ class SlapTest < Test::Unit::TestCase
   def test_simple
     assert_kind_of SlappingArray, @two_level.slap
     
-    assert_equal [3,1], @two_level.slap.length.retract
+    assert_equal [['1','2','3'],['5']], @two_level.slap.to_s.retract
   end
   
   def test_mutate
