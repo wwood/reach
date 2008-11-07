@@ -43,7 +43,13 @@ class ReachingArray
       # array elements in place as we want, so have to use collect
       # instead.
       @retract = @retract.collect do |o|
-        o.send(method, *args, &block)
+        unless o.kind_of?(Array)
+          o.send(method, *args, &block)
+        else
+          # Update in 0.2.1: If the element of the array is an array
+          # itself, then operate on it as a ReachingArray as well.
+          o.reach.send(method, *args, &block).retract
+        end
       end
       return self
     end
