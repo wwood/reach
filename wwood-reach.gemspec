@@ -27,7 +27,8 @@ collect and sum, but also methods that operate Book objects, such as author and 
     "lib/reach.rb",
     "rdoc.sh",
     "reach.gemspec",
-    "test/test_reach.rb"
+    "test/test_reach.rb",
+    "wwood-reach.gemspec"
   ]
   s.homepage = %q{http://github.com/wwood/reach}
   s.licenses = ["MIT"]
