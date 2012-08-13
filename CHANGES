@@ -1,3 +1,5 @@
 Version 0.2.1
 * Added recursion, so that arrays within reachable arrays are treated as 
    reachable arrays themselves
+Version 0.3.0
+* Stopped development here, renamed to rubygem reachable

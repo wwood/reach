@@ -4,15 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{wwood-reach}
-  s.version = "0.2.2"
+  s.name = "wwood-reach"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben J Woodcroft"]
-  s.date = %q{2011-05-28}
-  s.description = %q{For instance, a ReachableArray of Book objects can not only take normal Array methods such as
-collect and sum, but also methods that operate Book objects, such as author and title. }
-  s.email = %q{gmail.com after donttrustben}
+  s.date = "2012-08-13"
+  s.description = "For instance, a ReachableArray of Book objects can not only take normal Array methods such as\ncollect and sum, but also methods that operate Book objects, such as author and title. "
+  s.email = "gmail.com after donttrustben"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -24,37 +23,35 @@ collect and sum, but also methods that operate Book objects, such as author and 
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/reach.rb",
     "rdoc.sh",
     "reach.gemspec",
-    "test/test_reach.rb",
     "wwood-reach.gemspec"
   ]
-  s.homepage = %q{http://github.com/wwood/reach}
+  s.homepage = "http://github.com/wwood/reach"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Reach is a small Ruby liby that extends the Array class so that Arrays are more transparent to methods.}
+  s.rubygems_version = "1.8.15"
+  s.summary = "Reach is a small Ruby liby that extends the Array class so that Arrays are more transparent to methods."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<reachable>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.0"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, ["> 1.0.0"])
+      s.add_development_dependency(%q<jeweler>, ["> 1.6.0"])
     else
+      s.add_dependency(%q<reachable>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.0"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, ["> 1.0.0"])
+      s.add_dependency(%q<jeweler>, ["> 1.6.0"])
     end
   else
+    s.add_dependency(%q<reachable>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.0"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, ["> 1.0.0"])
+    s.add_dependency(%q<jeweler>, ["> 1.6.0"])
   end
 end
 
