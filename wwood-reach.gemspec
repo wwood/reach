@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/wwood/reach"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.17"
   s.summary = "Reach is a small Ruby liby that extends the Array class so that Arrays are more transparent to methods."
 
   if s.respond_to? :specification_version then
